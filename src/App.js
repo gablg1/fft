@@ -68,7 +68,7 @@ function App() {
 
             {cols.map(y =>
               line.map(x =>
-                <Rect key={`${x},${y}`} stroke="blue" fill="#00969c"
+                  <Rect key={`${x},${y}`} stroke="blue" fill="#4287f5"
                   x={x * horizontalOffset} y={y * verticalOffset} width={width} height={height} />
               )
             )}
