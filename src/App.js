@@ -1,5 +1,5 @@
 import ramza from './ramza.png';
-import { Stage, Layer, Rect, Text } from 'react-konva';
+import { Stage, Layer, Rect } from 'react-konva';
 import './App.css';
 import _ from 'lodash';
 import {URLImage} from './utils';
