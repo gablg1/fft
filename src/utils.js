@@ -35,8 +35,7 @@ export class URLImage extends React.Component {
   render() {
     return (
       <Image
-        x={this.props.x}
-        y={this.props.y}
+        {...this.props}
         image={this.state.image}
         ref={node => {
           this.imageNode = node;
