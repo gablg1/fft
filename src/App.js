@@ -2,6 +2,7 @@ import ramza from './ramza.png';
 import { Stage, Layer, Rect, Text } from 'react-konva';
 import './App.css';
 import _ from 'lodash';
+import {URLImage} from './utils';
 
 function App() {
   const [width, height, spaceBetween] = [50, 50, 10];
@@ -26,6 +27,8 @@ function App() {
               <Rect x={x * (width + spaceBetween)} y={y * (height + spaceBetween)} width={width} height={height} fill={'blue'} />
             )
           )}
+
+            <URLImage src={ramza} x={150} />
           </Layer>
         </Stage>
 
@@ -35,3 +38,5 @@ function App() {
 }
 
 export default App;
+
+
