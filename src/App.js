@@ -5,9 +5,11 @@ import _ from 'lodash';
 import {URLImage} from './utils';
 import {useEffect, useState} from 'react';
 
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [position, setPosition] = useState({x: 5, y: 5});
+
 
   const [width, height, spaceBetween] = [80, 80, 5];
 
@@ -18,15 +20,31 @@ function App() {
 
 
   useEffect(() => {
+    const checkPosition = (newPos, oldPos) => {
+      if (newPos.x < 0 || newPos.x >= nCols || newPos.y < 0 || newPos.y >= nLines) {
+        return oldPos;
+      } else {
+        return newPos;
+      }
+    }
+
     const handleKeyDown = (e) => {
       if (e.keyCode === 37) {
-        setPosition(prevPosition => _.extend({}, prevPosition, {x: prevPosition.x - 1}));
+        setPosition(prevPosition =>
+          checkPosition(_.extend({}, prevPosition, {x: prevPosition.x - 1}), prevPosition)
+        );
       } else if (e.keyCode === 38) {
-        setPosition(prevPosition => _.extend({}, prevPosition, {y: prevPosition.y - 1}));
+        setPosition(prevPosition =>
+          checkPosition(_.extend({}, prevPosition, {y: prevPosition.y - 1}), prevPosition)
+        );
       } else if (e.keyCode === 39) {
-        setPosition(prevPosition => _.extend({}, prevPosition, {x: prevPosition.x + 1}));
+        setPosition(prevPosition =>
+          checkPosition(_.extend({}, prevPosition, {x: prevPosition.x + 1}), prevPosition)
+        );
       } else if (e.keyCode === 40) {
-        setPosition(prevPosition => _.extend({}, prevPosition, {y: prevPosition.y + 1}));
+        setPosition(prevPosition =>
+          checkPosition(_.extend({}, prevPosition, {y: prevPosition.y + 1}), prevPosition)
+        );
       } else {
         return;
       }
@@ -37,7 +55,7 @@ function App() {
       document.addEventListener('keydown', handleKeyDown);
       setLoading(false);
     }
-  }, [loading]);
+  }, [loading, nCols, nLines]);
 
   return (
     <div className="App">
